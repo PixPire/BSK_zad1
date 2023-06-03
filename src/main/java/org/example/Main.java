@@ -54,11 +54,12 @@ public class Main {
 
 
 
-    static String Code(String text, int n) {
+    public static String Code(String text, int n) {
 
         String codedText="";
 
-        StringBuilder[] rails = new StringBuilder[n]; //Utworzenie obiektu tablicy StringBuilderów, każdy StringBuilder tworzy oddzielny napis-szynę, które później będą składane w zakodowany tekst
+        StringBuilder[] rails = new StringBuilder[n]; //Utworzenie obiektu tablicy StringBuilderów, każdy StringBuilder
+        // tworzy oddzielny napis-szynę, które później będą składane w zakodowany tekst
 
         for(int i=0;i<n;i++){
             rails[i]=new StringBuilder(); //Utworzenie konkretnych instancji StringBuilder dla każdej szyny
@@ -82,8 +83,6 @@ public class Main {
                 dirDown=false;
                 activeRail=n-2;
             }
-
-
         }
 
         StringBuilder codedTextBuilder = new StringBuilder();//Utworzenie StringBuildera, do którego przekazywane będą kolejne szyny
@@ -91,16 +90,14 @@ public class Main {
         for(int i=0;i<n;i++){
             codedTextBuilder.append(rails[i].toString());//przekazywanie kolejnych szyn do wyniku
         }
-       
         codedText=codedTextBuilder.toString();
-
         return codedText;
     }
 
 
 
 
-    static String Decode(String codedText, int n) {
+    public static String Decode(String codedText, int n) {
 
         char[] decodedText = new char[codedText.length()];
 
@@ -118,7 +115,8 @@ public class Main {
                 //przejscie na kolejną literę tej samej szyny
                 if (activeRail == 0 || activeRail == n - 1) {
                     decodedPosition = decodedPosition + 2 * (n - 1);//dla szyn graniczących
-                } else if (dirDown) { //dla pozostałych szyn stosowane zamiennie 2 wzory na odczytywanie kolejnych wartosci (zależnie czy zygzak idzie do góry czy do dołu są 2 ilości ,,wolnych pól" między literami tej samej szyny)
+                } else if (dirDown) { //dla pozostałych szyn stosowane zamiennie 2 wzory na odczytywanie kolejnych wartosci
+                    // (zależnie czy zygzak idzie do góry czy do dołu są 2 ilości ,,wolnych pól" między literami tej samej szyny)
                     decodedPosition = decodedPosition + 2 * (n - activeRail - 1);
                     dirDown = false;
                 } else {
